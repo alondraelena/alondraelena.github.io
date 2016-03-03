@@ -1,0 +1,227 @@
+<!------authors: Julia Hesse-Fong, Alo Navarro, Rachael Wang, Ale Vasquez----->
+<!-----GirlsWhoCode final project-->
+<!----7.22.2015--->
+<html> 
+	<head> 
+		<title> UNBORDERED </title> 
+			<meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+			<!-- IMPORT FOR THE MAPBOX API -->
+			<link  rel="icon" href="twopeopl.ico" type="image/x-icon" />
+			<script src='https://api.tiles.mapbox.com/mapbox.js/v2.1.9/mapbox.js'></script>
+			<link href='https://api.tiles.mapbox.com/mapbox.js/v2.1.9/mapbox.css' rel='stylesheet' />
+			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+			<link href='http://fonts.googleapis.com/css?family=Playfair+Display' rel='stylesheet' type='text/css'> <!-- font by Clause Eggers Sørenson on Google Fonts-->
+			
+	
+	</head>
+		<style> 
+		
+			body { margin:0; padding:0; }
+			#container { position:relative; padding: 0px; margin: 0px auto; width: 100%;}
+			#map { position:relative; height: 500px; width:100%; }
+			.popupimage { width: 200px; }
+				
+			html  {
+			background-color: #ffffff; 
+			}
+			
+			h1 {
+				color:#000000;
+				font-size:75px;
+				margin:0px;
+				font-family:'Playfair Display', serif;
+				text-align: center;
+				text-shadow: 2px 2px #cbcbcb;
+			}
+			
+			h3 {
+				color: #000000;
+				font-size: 20px;
+				margin: 15px 100px;
+				font-family: 'Playfair Display', serif;
+				text-shadow: 1px 1px #cbcbcb;
+				word-spacing: 0px;
+				text-align: center;
+				
+			}
+			
+			h4 {
+			color: #000000;
+			font-size: 20px;
+			margin: 15px 100px;
+			font-family: 'Playfair Display', serif;
+			text-shadow: 1px 1px #cbcbcb;
+			word-spacing: 0px;
+			text-align: center;
+			}
+			
+			#titlelist li {
+			display: inline;
+			list-style-type: none;
+			padding-right: 30;
+			}
+			
+			p {
+				color:#000000;
+				font-size: 20px;
+				font-family: "Times New Roman"
+			}
+			
+			div.box{
+				margin: 100px;
+				border-style: dashed;
+				height: 25%;
+				width: 75%;
+				padding: 25px 50px 25px 10 px;
+			}
+			
+			a:link {
+				color: #000000;
+				text-decoration: none;
+			}
+			
+			a:visited {
+				color: #000000;
+				text-decoration: none;
+			}
+			
+			b:link {
+				color: #000000;
+				text-decoration: underline;
+			}
+			
+			#titlelist {
+				color: #000000;
+				text-align: center;
+				font-family: "Times New Roman";
+			}
+			
+			#box {
+				color: #000000;
+				width:100%;
+				height:100%;
+			}
+			
+		</style> 
+
+	<body>
+	<h1> un-bordered.</h1>
+		
+		<!--------MENU-------->
+		<hr>
+			<ul id="titlelist">
+				<li> <b href="immigration.html"> Welcome </b> </li>
+				<!---changed to "immigration.html" because other pages link to immigration.html----->
+				<li> ~ </li>
+				<li> <a href="gamepage.html"> Stories </a> </li>
+				<li> ~ </li>
+				<li> <a href="addYourStory.html"> Share  </a> </li>
+				<li> ~ </li>				
+				<li> <a href="aboutus.html"> About Us </a> </li>
+			</ul>
+		<hr>
+		
+		<!--------MAP------->
+		
+		<!---flight lines-->
+		
+
+		<div id='container'> <!--this is part of the GWC starter code for MAPBOX API-->
+			<h3>  this is where we come from / this is where we are </h3>
+	
+			<div id='map'></div>
+		</div>
+		<hr>
+
+		<script src='newscript-unbordered.js'></script> <!-- accessing the other javascript  file -->
+		</script>
+		
+		<script type="text/javascript"> <!--Slideshow hidden here--> 
+		
+		<!--------SLIDESHOW--------->
+			var i = 0; 
+			var image = new Array();   
+			
+			// LIST OF IMAGES 
+			image[0] = "statistics 1.png";
+			image[1] = "statistics 2.png";
+			image[2] = "statistics 3.png";
+			image[3] = "statistics 4.png";
+			image[4] = "statistics 5.png";
+			image[5] = "statistics 6.png";
+
+
+			var k = image.length-1;    
+
+			function next(){
+			var img= document.getElementById("slide"); 
+			img.src= image[i]; 
+			if(i < k ) { i++;}  
+			else  { i = 0; }
+			}
+
+			function prev(){
+			var img= document.getElementById("slide"); 
+			img.src= image[i]; 
+			if(i >0 ) { i--;}  
+			else  { i = k; }
+			}
+
+			function swapImage(){ 
+			var img= document.getElementById("slide"); 
+			img.src= image[i]; 
+			if(i < k ) { i++;}  
+			else  { i = 0; } 
+			setTimeout("swapImage()",5000); 
+			} 
+			function addLoadEvent(func) { 
+			var oldonload = window.onload; 
+			if (typeof window.onload != 'function') { 
+			window.onload = func; 
+			} else  { 
+			window.onload = function() { 
+			if (oldonload) { 
+			oldonload(); 
+			} 
+			func(); 
+			} 
+			} 
+			} 
+			addLoadEvent(function() { 
+			swapImage(); 
+			});  
+			</script> 
+			<center>
+			<div id="box" style="border:none;background-color: transparent; height: 700px" >
+				<table> 
+					<tr> 
+						<td> 
+							<img onclick="prev()" title="Previous" alt ="Prev" height="90" width="90"src="prev.png"/> 
+						</td>
+						<td> 
+							<img name="slide" id="slide" alt ="my images" height="550" width="800" border= "2px" margin= "5px" > 
+							<!----option: change width to 1000 to make stats full-screen---> 
+						</td> 
+						<td>
+							<img onclick="next()" title="Next" alt ="Next" height="90" width="90" src="next.png"/> 
+						</td>
+					</tr> 
+					<tr> 
+						<td>
+						</td>
+						<td align="center"style="font:small-caps bold 15px georgia; color:blue;"> 
+							<div id ="mydiv"></div>
+						</td> 
+						<td>
+						</td>
+					</tr>  
+				</table>
+			</div>
+			</center>
+			<!-------END OF SLIDESHOW--------->
+			<div data-role = "footer">
+				<h4> &#169 2015 JARA </h4>
+			</div>
+	</body> 
+</html> 
+

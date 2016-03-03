@@ -1,0 +1,149 @@
+<html>
+	<head>
+		<title>GWC Graphics and Animation Week!</title>
+		<script src="http://cloud.github.com/downloads/processing-js/processing-js/processing-1.4.1.min.js"></script>
+		<script type="text/processing" data-processing-target="mycanvas">
+		// Please don't change any HTML!
+		// Your code goes here starting at this indent level!
+	class Oct{
+		var r;
+		var g;
+		var b;
+		var Xoct;
+		var Yoct;
+		var scale;
+		var speedx;
+		var speedy;
+		
+		Oct(red,green,blue,octX,octY,size,horizx,verty){
+			r = red;
+			g = green;
+			b = blue;
+			Xoct = octX;
+			Yoct = octY;
+			scale = size;
+			speedx = horizx;
+			speedy = verty;
+		}
+		void draw(){
+			fill (r,g,b);
+			stroke (r,g,b);
+			ellipse(Xoct,Yoct,scale*20,scale*10);
+			line(Xoct,Yoct+10,Xoct-10,Yoct+20*scale);
+			line(Xoct,Yoct+10,Xoct+10,Yoct+20*scale);
+			line(Xoct,Yoct+10,Xoct-5,Yoct+20*scale);
+			line(Xoct,Yoct+10,Xoct+5,Yoct+20*scale);
+		}
+		
+		void move() {
+			if (Xoct > 0){
+			Xoct -= speedx;
+			}
+			else{
+			Xoct = 800
+			Yoct = random(0,600);
+			Xoct -= speedx;
+			}
+			if (Yoct > 0){
+			Yoct -= speedy;
+			}
+			else{
+			Yoct = 600;
+			Xoct = random(0,800);
+			Yoct -=speedy;
+			}
+			
+		}
+}
+	class Fish{
+		var R;
+		var G;
+		var B;
+		var Xfish;
+		var Yfish;
+		var scalef;
+		var spx;
+		var spy;
+		
+		Fish(Red,Green,Blue,fishX,fishY,sizef,horix,vertiy){
+			R = Red;
+			G = Green;
+			B = Blue;
+			Xfish = fishX;
+			Yfish = fishY;
+			scalef = sizef;
+			spx = horix;
+			spy = vertiy;
+		}
+		void draw(){
+			fill (R, G, B);
+			ellipse (Xfish, Yfish, 70*scalef,30*scalef);
+			triangle (Xfish-35*scalef,Yfish,Xfish-55*scalef,Yfish-15*scalef,Xfish-55*scalef,Yfish+15*scalef);
+			fill(134,188,224);
+			stroke(255,255,255);
+			ellipse (Xfish + 40*scalef,Yfish - 5*scalef,scalef*5,scalef*5);
+			ellipse (Xfish + 43*scalef,Yfish - 13*scalef,scalef*5,scalef*5);
+			ellipse (Xfish + 46*scalef,Yfish - 21*scalef,scalef*5,scalef*5);
+			
+		}
+		
+		void move() {
+		if (Xfish < 800){
+		Xfish += spx;
+		}
+		else{
+		Xfish = 0;
+		Yfish = random(0,600);
+		Xfish += spx;
+		}		
+			//Yfish += spy;	
+		}
+		};
+		var oct;
+		var fish;
+    var setup = function(){
+        //var rand = random(1,5);
+       // for (i=1;i<= rand;i++){
+            oct = new Oct(random(0,255),random(0,255),random(0,255),random(0,800),random(0,600),random(1,5), random(1,5),random(1,5));
+			fish = new Fish(random(0,255),random(0,255),random(0,255),random(0,800),random(0,600),random(1,5), random(1,5),random(1,5));
+			//  }
+    };
+		
+		
+		
+		// You need to choose the size of your own canvas now.
+		size(800,600);
+		
+		// Paddleball writes and then calls a setup() function for all the stuff you want to run once.
+		// Not required, but clean!
+		setup();
+		void draw() {
+			background (27, 155, 194);
+			fill(250, 203, 123);
+			stroke(250, 203, 123);
+			rect(0,480,800,125);
+			ellipse(50,480,200,50);
+			ellipse(250,480,200,50);
+			ellipse(450,480,200,50);
+			ellipse(650,480,200,50);
+			fill(22,180,22);
+			stroke(22,180,22);
+			ellipse(50,450,50,150);
+			ellipse(500,450,50,150);
+			fill(252,99,15);
+			stroke(252,99,15);
+			ellipse(300,450,50,150);
+			ellipse(750,450,50,150);
+			oct.draw();
+			oct.move();
+			fish.draw();
+			fish.move();
+			// Your draw loop is now written the same way as the class functions are written.
+			// Note no semicolon at the end.
+		};
+		</script>
+	</head>
+	<body>
+		<canvas id="mycanvas"></canvas>
+	</body>
+</html>

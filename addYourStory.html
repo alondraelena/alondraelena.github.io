@@ -1,0 +1,174 @@
+<html>
+<head> 
+	 
+	
+<!--Bootstrap stuff-->	
+ <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+ <link  rel="icon" href="twopeopl.ico" type="image/x-icon" />
+ <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+ <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+ <link href='http://fonts.googleapis.com/css?family=Playfair+Display' rel='stylesheet' type='text/css'> <!-- font by Clause Eggers Sørenson on Google Fonts-->
+
+ 
+ <!--jQuery stuff-->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.css" />
+<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>
+	
+</head> 
+<body>
+	
+	
+	<!--main page: will contain form-->		
+	<div data-role="page" id="main"> 		
+			<div data-role="header">
+			<h1> un-bordered. </h1>
+			</div>
+		<div class="container" id ="form">
+		  <center> <h1> Share Your Story </h1> </center> 
+		  <form role="form">
+			<div>
+				<label>Title:</label>
+				<textarea rows="3" id="title"> </textarea>
+			</div> 
+			<div class="form-group">
+			  <label>Input:</label>
+			  <textarea class="form-control" rows="5" id="story"></textarea>
+			</div>
+		  </form>
+		  <button onclick="submitForm()"> Submit </button> <!--will call the submitForm function when clicked-->
+		</div>	
+		<div>
+			<center> <h2>Your Story</h2> </center>
+			<a href="#newpage"><p id="demo">  </p></a> 
+			<!--your story title (and page) will go here-->
+			<center> <h2> Previous stories </h2> </center>
+			<!-- <a href="#newpage"><p id="other"> </p></a> -->
+			<center> <p><a href ="#storymenu">View more</a></p> </center> <!--will direct you to a page with a menu 
+			where you can view all stories-->
+			
+			<div data-role="footer">
+				<center> <a href="immigration.html"> Welcome </a> 
+				<!---changed to "immigration.html" because other pages link to immigration.html----->
+				<a href="gamepage.html"> Stories </a> 
+				<b href="addYourStory.html"> Share </b>  
+				<a href="aboutus.html"> About Us </a> </center>
+			</div><!-- /header -->
+		</div>
+		
+		
+	</div> <!--end page-->
+
+	<!-----------NEW PAGE------------------->
+	<div data-role="page" id="newpage"> <!---------will create a new page for newly created stories --> 
+		<div data-role="header"> 
+			<h1 id="headtext"> <h1> <!--the title will be the header-->
+		</div>
+		<div data-role="content"> <!--the story will be the content-->
+		<p id="paragraph"> </p>
+		</div> 
+	</div> 
+	<!---------------------------------MENU BAR ------------------------------->
+
+	  <div data-role="page"  id="storymenu">
+		<form method="post" action="demoform.asp">
+		  <fieldset class="ui-field-contain">
+			<label for="storySelect">Select a Story</label>
+			<select name="storySelect" id="storySelect" >
+			  <!-- 
+				
+				<option> containers will be created here using the submitForm function
+				-->
+			</select>
+		  </fieldset>
+		  <!--input type="submit" data-inline="true" value="Submit" id="answer" onclick="showStory()"--> <!--HELP ME HERE!!!!!-->
+		  <button onclick="showStory()" id="answer"> Submit </button> 
+		</form>
+			<div> 
+				<p id="display"> Please select a story from the menu and press Submit. <!--story will show up here when title is selected-->
+				</p> 
+			</div> 
+	  </div>
+  
+
+	
+		
+	
+	
+	<script>
+		var storyTitles =[]; //list of titles 
+		var pages={}; //empty pages dictionary 
+
+		function submitForm() {
+			var x = document.getElementById("story").value;	//storing story 
+			var z = document.getElementById("title").value; //storing title 
+			document.getElementById("demo").innerHTML = z; //your story= your title 
+			storyTitles.push(z);
+			//document.getElementById("other").innerHTML = storyTitles; //previous stories = all previous titles 
+			
+			var y = document.getElementById("title").value;
+			//y is the title
+			document.getElementById("headtext").innerHTML = y;
+			//set title to header in page
+			
+			var story = document.getElementById("story").value;
+			//story is the title
+			document.getElementById("paragraph").innerHTML = story;
+			//set the story to the content in page 
+			
+			var chosenTitle = y;
+			var currentStory = story;
+			//use these variables in the showStory() function 
+			
+			
+			
+			
+			pages[y] = story;
+			
+			/*pages.push({ //will store title and story 
+				key: y, 
+				value: story
+			});
+			*/
+			
+			
+			//adding to the story menu 
+			var para = document.createElement("option"); //creates <option> 
+			para.id = y;
+			para.value = y;
+			var t = document.createTextNode(y); //creates new text node  ###############################
+			para.appendChild(t);
+			document.getElementById("storySelect").appendChild(para); 
+		}
+			
+			function showStory() {
+			 //show the story for selected title 
+			 //var chosenTitle = y 
+			 //var currentStory = page[chosenTitle];
+			 
+			 //find a way to access the current story from the pages dictionary 
+			 
+			
+			 
+			 //
+			 var sel= document.getElementById("storySelect");
+			 var chosenTitle = sel.options[sel.selectedIndex].value;
+			 document.getElementById("display").innerHTML = pages[chosenTitle];
+			}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</script>
+	
+</body>
+</html>
