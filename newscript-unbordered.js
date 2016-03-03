@@ -6,8 +6,8 @@
 
 L.mapbox.accessToken = 'pk.eyJ1IjoiamVmZnN0ZXJuIiwiYSI6IlAzRFFiN0EifQ.mNWvayrLEw9wULuq0sopyA';
 //creates a map (initializes)
-var map = L.mapbox.map('map', 'examples.map-20v6611k')
-  .setView([38.12367, -76.81229], 9);
+var map = L.mapbox.map('map', 'examples.map-20v6611k').setView([40, -75], 3);
+    //--- [38.12367, -76.81229], 9
 
 //initializing the feature layer
 var myLayer = L.mapbox.featureLayer().addTo(map);
@@ -67,7 +67,24 @@ var geojson = {
 		//gps-coordinates.net //lat,long
 		//mapbox.com/maki
 	},
-	
+        
+	{
+		type: 'Feature',
+		properties: {
+			title: 'Puebla',
+			description: 'Alo\'s hometown',
+			'marker-color': '#E9967A', //dark salmon
+			'marker-size': 'large',
+			'marker-symbol': 'garden',
+		},
+		geometry: {
+			type: 'Point',
+			coordinates:   [19.0000, 97.8833]
+                //
+		}
+		//gps-coordinates.net //lat,long
+		//mapbox.com/maki
+	},
 	
 
     ]
